@@ -53,6 +53,8 @@ make sure to add your {token} in the pre-proccessing file
 
 ---
 
+![output](https://github.com/user-attachments/assets/be8ab214-4ba3-4844-a843-4bf142fcfbff)
+
 ## Usage
 
 ### 1. Processing a DataFrame in Batches
@@ -96,6 +98,7 @@ print(len(enhanced_df))
 
 3. **Resuming Progress**  
    Restart processing from a specific row index if needed.
+   
 
 ---
 
@@ -108,4 +111,7 @@ Contributions are welcome! Feel free to open a pull request or file an issue for
 ## License
 
 This project is released under the [MIT License](LICENSE). You are free to use, modify, and distribute this code.
+
+![keynoteTemplate key](https://github.com/user-attachments/assets/7d697047-4687-4a7e-93db-837d8132d799)
+
 
