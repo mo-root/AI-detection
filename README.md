@@ -29,6 +29,8 @@ This repository contains Python scripts to:
 
 ## Setup & Requirements
 
+make sure to add your {token} in the pre-proccessing file
+
 1. **Python Version**  
    - This code has been tested with Python 3.8+ (older versions may work but are untested).
 
