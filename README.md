@@ -1,5 +1,8 @@
 # AI Text Processing with Batch Perplexity & Entropy Computation
 
+<img width="1132" alt="Screen Shot 2025-03-08 at 5 05 55 PM" src="https://github.com/user-attachments/assets/f084c2b9-0326-4fb7-9b3f-b560e980dfab" />
+
+
 This repository contains Python scripts to:
 1. Process large datasets in batches.
 2. Compute per-token perplexities and entropy scores using two language models.
