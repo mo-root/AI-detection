@@ -1,10 +1,10 @@
 # AI Text Processing with Batch Perplexity & Entropy Computation
 
 This repository contains Python scripts to:
-1. Process large datasets in batches,
-2. Compute per-token perplexities and entropy scores using two language models,
-3. Store the processed results,
-4. Match scores back to the original DataFrame.
+1. Process large datasets in batches.
+2. Compute per-token perplexities and entropy scores using two language models.
+3. Store the processed results.
+4. Match scores back to the original DataFrame for analysis.
 
 ---
 
@@ -12,54 +12,35 @@ This repository contains Python scripts to:
 
 **Key Components:**
 
-- **`process_batch`**  
-  Processes a list of texts in batches to improve efficiency.
-
-- **`process2scores`**  
-  Generates perplexity and cross-entropy metrics for a single text or a batch of texts.  
-  - Returns a list of four arrays per text: `[l1, l2, l3, l4]`, representing token-wise scores.
-
-- **`process_dataframe_in_batches`**  
-  Uses true batch processing to handle large DataFrames, saving intermediate progress to a JSON file after every 10 batches (or final batch).
-
-- **`match_scores_with_dataframe`**  
-  Matches the computed scores back to the original DataFrame rows, either by DataFrame index or by a specific ID column.
+- **`process_batch`**: Efficient batch processing of text samples.
+- **`process2scores`**: Computes per-token perplexity and cross-entropy scores.
+- **`process_dataframe_in_batches`**: Handles large DataFrames efficiently, saving progress incrementally.
+- **`match_scores_with_dataframe`**: Matches computed scores back to their original DataFrame entries.
 
 ---
 
 ## Setup & Requirements
 
-make sure to add your {token} in the pre-proccessing file
+Make sure to add your `{token}` in the pre-processing file.
 
-1. **Python Version**  
-   - This code has been tested with Python 3.8+ (older versions may work but are untested).
+### Dependencies
 
-2. **Dependencies**  
-   - `pandas` for DataFrame manipulation  
-   - `tqdm` for progress bars  
-   - `numpy` for numerical arrays  
-   - `json` (part of the standard library)  
-   - `os` and `time` (part of the standard library)  
-   - `torch` or a similar library if `bino` depends on PyTorch (depending on how `bino` is implemented)  
+- Python 3.8+
+- `pandas`, `tqdm`, `numpy`, `json`, `os`, `time`
+- `torch` (if `bino` relies on PyTorch)
+- `bino` library for text tokenization and logit extraction.
 
-3. **The `bino` Library**  
-   - Ensure you have the `bino` library installed or available in your environment.  
-   - `bino.tokenize(texts)`: Tokenizes a list of texts.  
-   - `bino.get_logits(tokenized)`: Retrieves logits from the models.  
-   - `bino.tokenizer.pad_token_id`: Used for identifying the padding token in the tokenized outputs.
+### Additional Code Requirements
 
-4. **Additional Custom Code**  
-   - Functions such as `per_token_perplexity()` and `per_token_entropy()` must be defined or imported before running the main script.
+Ensure functions such as `per_token_perplexity()` and `per_token_entropy()` are properly defined.
 
 ---
 
-![output](https://github.com/user-attachments/assets/be8ab214-4ba3-4844-a843-4bf142fcfbff)
+![Model Output](https://github.com/user-attachments/assets/be8ab214-4ba3-4844-a843-4bf142fcfbff)
 
 ## Usage
 
 ### 1. Processing a DataFrame in Batches
-
-Suppose you have a `pandas.DataFrame` called `df` with a column named `'text'`. You can process it in batches and save the output to JSON by calling:
 
 ```python
 process_dataframe_in_batches(
@@ -71,8 +52,6 @@ process_dataframe_in_batches(
 ```
 
 ### 2. Matching Scores Back to the DataFrame
-
-After processing, match scores back to the original DataFrame:
 
 ```python
 import json
@@ -88,30 +67,34 @@ print(len(enhanced_df))
 
 ---
 
-## Best Practices and Tips
+## Results
 
-1. **Check for Alignment**  
-   Ensure the index or ID used to match scores with DataFrame rows is consistent.
+Our AI detection model achieved:
 
-2. **Monitoring Long Jobs**  
-   Monitor memory usage and disk space for large datasets.
+- **Training & Validation Accuracy:** 85–90%
+- **Test Accuracy:** 75%
+- **ROC AUC Score:** ~0.82
 
-3. **Resuming Progress**  
-   Restart processing from a specific row index if needed.
-   
+These results indicate that our model effectively distinguishes AI-generated text from human-written text using contrastive perplexity analysis and RNN-based classification.
+
+---
+
+## Best Practices & Tips
+
+1. **Ensure Alignment**: Keep consistent indexing for score matching.
+2. **Monitor Resource Usage**: Large datasets may require careful memory management.
+3. **Resume Processing**: Use `start_index` to avoid redundant computations if interrupted.
 
 ---
 
 ## Contributing
 
-Contributions are welcome! Feel free to open a pull request or file an issue for enhancements or bug fixes.
+Contributions are welcome! Open a pull request or file an issue for improvements.
 
 ---
 
 ## License
 
-This project is released under the [MIT License](LICENSE). You are free to use, modify, and distribute this code.
+This project is released under the [MIT License](LICENSE).
 
-![keynoteTemplate key](https://github.com/user-attachments/assets/7d697047-4687-4a7e-93db-837d8132d799)
-
-
+![Keynote Template](https://github.com/user-attachments/assets/7d697047-4687-4a7e-93db-837d8132d799)
